@@ -145,7 +145,7 @@ def mmd_summary_space(summary_outputs, rng, z_dist="gaussian", kernel="gaussian"
     assert z_dist=="gaussian", "Only Gaussian distribution is supported for now"
     assert kernel=="gaussian", "Only Gaussian kernel is supported for now"
 
-    z_samples = jax.random.normal(rng, shape=summary_outputs.shape)
+    z_samples = jax.random.normal(rng, shape=(summary_outputs.shape[0]*10, summary_outputs.shape[1]))
     mmd_loss = maximum_mean_discrepancy(summary_outputs, z_samples, kernel=kernel)
     return mmd_loss
 
